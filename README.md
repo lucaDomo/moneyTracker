@@ -8,9 +8,13 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-![Demo1](/readmeFiles/moneytracker_gid_1.gif)
+## Demo1:
 
-![Demo2](/readmeFiles/moneytracker_gid_2.gif)
+![Demo1](/readmeFiles/moneytracker_gif_1.gif)
+
+## Demo2:
+
+![Demo2](/readmeFiles/moneytracker_gif_2.gif)
 
 
 ## About Laravel
