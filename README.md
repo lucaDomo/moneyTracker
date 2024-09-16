@@ -86,6 +86,6 @@ php artisan serve
 The application will be accessible at http://localhost:8000.
 
 #### Other options:
-If you're on macOS you can use <a href="https://laravel.com/docs/11.x/valet">Laravel Valet</a> (i use thi solution).
+If you're on macOS you can use <a href="https://laravel.com/docs/11.x/valet">Laravel Valet</a> (i use this solution).
 
 There are also other methods (such as <a href="https://laravel.com/docs/11.x/homestead">Homestead</a>) that you can find in the Laravel documentation in the Packages section.
