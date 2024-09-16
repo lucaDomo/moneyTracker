@@ -218,7 +218,7 @@ function saveCategory(){
     })
     .then((response) => response.json())
     .then((data) => {
-        alert(2)
+        //alert(2)
         console.log(data);
         
         var category = data.category;

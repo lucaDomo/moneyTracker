@@ -16,7 +16,7 @@ class MovementsController extends Controller
     public function detail(Request $request, string $id){
         $movements = Movement::where('user_id', auth()->user()->id)->where("id", $id)->get();
         if($movements==null||count($movements)==0){
-            return redirect("/dashboard")->with('messagge-error', 'Il movimento che stai cercando di visualizzare non esiste!');
+            return redirect("/dashboard")->with('messagge-error', 'The transaction you are trying to view does not exist!');
         }
         else{
             $movement = $movements[0];
@@ -53,11 +53,11 @@ class MovementsController extends Controller
             $movement->day_number = $day;
             
             $movement->save();
-            return redirect('dashboard')->with('status', 'Movimento modificato con successo!');
+            return redirect('dashboard')->with('status', 'Transaction successfully modified!');
         }else if($action=="Delete"){
             //Movement::find($id)->delete();
             Movement::where('user_id', auth()->user()->id)->where("id", $id)->delete();
-            return redirect('dashboard')->with('status', 'Movimento eliminato con successo!');
+            return redirect('dashboard')->with('status', 'Transaction successfully deleted!');
         }
 
     }
