@@ -26,20 +26,8 @@ class HomeController extends Controller
                     'categories.name as category_name', 'categories.file as category_file')
             ->take(5)
             ->get();
-        //echo $movements;
-        
-        //$movements = Movement::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->take(5)->get();
-        // Prendere i nomi delle categorie e passarle
-        //$categories = Category::where('user_id', auth()->user()->id)->get();
-        
-        /*
-        foreach ($movements as $movement){
-            $category_id = $movement->category_id; # uuid
-            $movement->category_name = $categories[$category_id-1]->name;
-            $movement->category_file = $categories[$category_id-1]->file;
-        }*/
 
-        // (2) Calcolare il resoconto mensile -> fatt
+        // (2) Calcolare il resoconto mensile
         $current_month = intval(date("m"));
         $current_year = intval(date("Y"));
         $current_month_movements = Movement::where('user_id', auth()->user()->id)
@@ -54,28 +42,9 @@ class HomeController extends Controller
             }
         }
 
-        // (3) Prendere i dati per il grafico (di default è settimanale) -> fatto
-
-        /*
-        $current_week_number = intval(date("W"));
-        $graph_movements = Movement::where('month_number',$current_month)->where('year', $current_year)->where('week_number', $current_week_number)->get();
-        $graph_values_in = array_fill(0, 8, 0);
-        $graph_values_out = array_fill(0, 8, 0);
-        foreach ($graph_movements as $movement){
-            $index = $movement->day_number - 1;
-            if($movement->movement_type_id==2){ //entrata
-                $graph_values_in[$index] += $movement->money;
-            } else{
-                $graph_values_out[$index] += $movement->money;
-            }
-        }
-        $graph_values_in = json_encode($graph_values_in);
-        $graph_values_out = json_encode($graph_values_out);
-        */
-
-        return view('dashboard', ['movements'=>$movements, 'month_in'=>$money_in, 'month_out'=>$money_out, 
-                                  //'graph_values_in'=>$graph_values_in,
-                                  //'graph_values_out'=>$graph_values_out
+        return view('dashboard', ['movements'=>$movements,
+                                  'month_in'=>$money_in,
+                                  'month_out'=>$money_out,
                                 ]);
 
     }

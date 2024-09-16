@@ -46,7 +46,7 @@ class CategoriesController extends Controller
         if (count($movements)>0){
             return response()->json([
                 'success' => false,
-                'messagge' => "Impossibile eliminare la categoria. Ci sono movimenti salvati con essa.\nNecessario eliminare o modificare tali movimenti."
+                'messagge' => "Unable to delete category. There are transactions saved with it.\nIt is necessary to delete or modify such transactions."
             ]);
         }
         

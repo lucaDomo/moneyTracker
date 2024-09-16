@@ -44,5 +44,16 @@
                 {{ $slot }}
             </main>
         </div>
+        <div class="bg-gray-100 dark:bg-gray-900" style="color: white; height:50px;">
+            <div style="display: flex; justify-content:center; gap:5px">
+                <div>
+                    <a href="https://github.com/lucaDomo" target=”_blank”>Luca Dominici</a>
+                </div>
+                <div> | </div>
+                <div>
+                    <span>Icons by <a href="https://icons8.it" style="color:#7D3CED" target=”_blank”>icons8.</a></span>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

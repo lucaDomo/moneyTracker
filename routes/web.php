@@ -32,15 +32,15 @@ Route::delete('/categories', [CategoriesController::class, 'deleteCategory'])->m
 
 
 // Modificare
-Route::get('/aggiungi', [AddMovementController::class, 'show'])->middleware(['auth', 'verified'])->name('aggiungi');
-Route::post('/aggiungi', [AddMovementController::class, 'add'])->middleware(['auth', 'verified'])->name('aggiungi');
+Route::get('/transaction/add', [AddMovementController::class, 'show'])->middleware(['auth', 'verified'])->name('transaction/add');
+Route::post('/transaction/add', [AddMovementController::class, 'add'])->middleware(['auth', 'verified'])->name('transaction/add');
 
-Route::get('/movimenti', [MovementsController::class, 'show'])->middleware(['auth', 'verified'])->name('movimenti');
+Route::get('/transactions', [MovementsController::class, 'show'])->middleware(['auth', 'verified'])->name('transactions');
 
-Route::get('/movimenti/detail/{id}', [MovementsController::class, 'detail'])->middleware(['auth', 'verified'])->name('movimenti_detail');
-Route::post('/movimenti/detail/{id}', [MovementsController::class, 'update'])->middleware(['auth', 'verified'])->name('movimenti_detail');
+Route::get('/transaction/detail/{id}', [MovementsController::class, 'detail'])->middleware(['auth', 'verified'])->name('transaction/detail');
+Route::post('/transaction/detail/{id}', [MovementsController::class, 'update'])->middleware(['auth', 'verified'])->name('transaction/detail');
 
-Route::get('/movimenti_list', [MovementsController::class, 'show_list'])->middleware(['auth', 'verified'])->name('movimenti_list');
+Route::get('/transactions/period', [MovementsController::class, 'show_list'])->middleware(['auth', 'verified'])->name('transactions/period');
 
 Route::get('/common/categories_by/movement_type_id', [CommonController::class, 'getCategoriesByMovementType'])->middleware(['auth', 'verified']);
 

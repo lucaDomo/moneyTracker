@@ -94,7 +94,7 @@ Other style in style.css
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
           <div class="title-div margin-20">
             <div class="circle"></div>
-            <h2 class="title">Lista movimenti</h2>
+            <h2 class="title">All transactions</h2>
           </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg margin-20" style="padding: 20px;">
                 
@@ -108,10 +108,10 @@ Other style in style.css
                     </div>
                     
                     <div>
-                        <input type="button" class="btn" value="Giorno" id="btn-day" style="margin: 10px">
-                        <input type="button" class="btn" value="Settimana" id="btn-week" disabled style="margin: 10px">
-                        <input type="button" class="btn" value="Mese" id="btn-month" style="margin: 10px">
-                        <input type="button" class="btn" value="Anno" id="btn-year" style="margin: 10px">
+                        <input type="button" class="btn" value="Day" id="btn-day" style="margin: 10px">
+                        <input type="button" class="btn" value="Week" id="btn-week" disabled style="margin: 10px">
+                        <input type="button" class="btn" value="Month" id="btn-month" style="margin: 10px">
+                        <input type="button" class="btn" value="Year" id="btn-year" style="margin: 10px">
                     </div>
                     <div class="date-picker">
                         <div class="date-picker-header">

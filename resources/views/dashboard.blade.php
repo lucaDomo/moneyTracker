@@ -171,12 +171,12 @@ Other style in style.css
             
             <div class="title-div margin-20">
                 <div class="circle"></div>
-                <h2 class="title">Ultimi movimenti aggiunti</h2>
+                <h2 class="title">Latest transactions added</h2>
             </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg margin-20" style="padding: 20px;">
                 <div style="display:flex;justify-content:flex-end;">
                     <button style="width:120px;height:50px;color:rgb(231, 228, 228);background-color:#7D3CED;
-                    font-size:18px;font-weight:500;" class="radius" onclick="addNewMovement()">Aggiungi</button>
+                    font-size:18px;font-weight:500;" class="radius" onclick="addNewMovement()">Add</button>
                 </div>
                 <div style="" >
                     @foreach ($movements as $movement)
@@ -200,7 +200,7 @@ Other style in style.css
                         </div>
                     @endforeach
                     <div style="text-align: center" class="margin-20">
-                        <a href="/movimenti" class="text-purple">Visualizza tutti i movimenti</a>
+                        <a href="/movimenti" class="text-purple">See all transactions</a>
                     </div>
                 </div>
             </div>
@@ -208,7 +208,7 @@ Other style in style.css
             <!-- RESOCONTO -->
             <div class="margin-20 title-div">
                 <div class="circle"></div>
-                <h2 class="title">Resoconto mensile</h2>
+                <h2 class="title">Monthly report</h2>
             </div>
 
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg margin-20">
@@ -224,7 +224,7 @@ Other style in style.css
                         <div style="display: flex; gap:30px;" class="resoconto-card-container">
                             <div class="radius card-resoconto">
                                 <div>
-                                    <h2 class="text-purple title">Spese</h2>
+                                    <h2 class="text-purple title">Expenses</h2>
                                     <h5 class="text-red title" id="month_out">{{ $month_out }}€</h5>
                                 </div>
                                 <hr>
@@ -238,7 +238,7 @@ Other style in style.css
                             </div>
                             <div class="radius card-resoconto">
                                 <div>
-                                    <h2 class="text-purple title">Guadagni</h2>
+                                    <h2 class="text-purple title">Earnings</h2>
                                     <h5 class="text-green title" id="month_in">{{ $month_in }}€</h5>
                                 </div>
                                 <hr>
@@ -263,20 +263,20 @@ Other style in style.css
             <!-- GRAFICO STATISTICHE -->
             <div class="margin-20 title-div">
                 <div class="circle"></div>
-                <h2 class="title">Monitoraggio</h2>
+                <h2 class="title">Monitoring</h2>
             </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg margin-20" style="min-height: 500px">
                 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div class="flex justify-between margin-20">
                         <button onclick="changeGraphDisplay()" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                            <div id="div_button_show_hide_graph">Nascondi grafico</div>
+                            <div id="div_button_show_hide_graph">Hide graph</div>
                         </button>
                         <!-- FILTRI -->
                         <div id="graph_filter_container">
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
                                     <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                                        <div id="filtro">Filtro: settimana</div><div class="ms-1">
+                                        <div id="filtro">Filter: weekly</div><div class="ms-1">
                                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                             </svg>
@@ -285,13 +285,13 @@ Other style in style.css
                                 </x-slot>
                                 <x-slot name="content">
                                     <x-dropdown-link href="javascript:void(0);" onclick="changeGraphAndStatistics('settimana')">
-                                        {{ __('Settimanale') }}
+                                        {{ __('Weekly') }}
                                     </x-dropdown-link>
                                     <x-dropdown-link href="javascript:void(0);" onclick="changeGraphAndStatistics('mese')">
-                                        {{ __('Mensile') }}
+                                        {{ __('Monthly') }}
                                     </x-dropdown-link>
                                     <x-dropdown-link href="javascript:void(0);" onclick="changeGraphAndStatistics('anno')">
-                                        {{ __('Annuale') }}
+                                        {{ __('Yearly') }}
                                     </x-dropdown-link>
                                 </x-slot>
                             </x-dropdown>
@@ -439,11 +439,13 @@ var last_day = today
 // END CALENDAR VARS
 
 
-const xDays = ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"];
-const xMonths = ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"]
+//const xDays = ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"];
+const xDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+//const xMonths = ["Gen", "Feb", "Mar", "Apr", "Mag", "Giu", "Lug", "Ago", "Set", "Ott", "Nov", "Dic"]
+const xMonths = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 function addNewMovement(){
-    window.location.href = 'https://moneytracker.test/aggiungi';
+    window.location.href = 'https://moneytracker.test/transaction/add';
 }    
 
 function hide(){
@@ -451,7 +453,7 @@ function hide(){
 }
 
 function movementDetail(id){
-    window.location.href = 'https://moneytracker.test/movimenti/detail/'+id;
+    window.location.href = 'https://moneytracker.test/transaction/detail/'+id;
 }
 
 //Inizio metodi per la gestione dei resoconti mensili
@@ -475,7 +477,8 @@ function resocontoPreviousMonth(){
 function updateResecontoDate(){
     var month = xMonths[resoconto_date_selected.getMonth()]
     var year = resoconto_date_selected.getFullYear()
-    el_resoconto_date_value.value = month + " " + year
+    var check_options = {'month': 'long'};
+    el_resoconto_date_value.value = resoconto_date_selected.toLocaleString('en-EN', check_options) + ' ' + year; //month + " " + year
     var urlMonth = resoconto_date_selected.getMonth() + 1
     var url = "/dashboard/resoconto?month="+ urlMonth + "&year=" + year
     getData(url)
@@ -563,11 +566,11 @@ function changeGraphDisplay(){
     if (chartVisible){
         //graphFilterContainer.style.display = "none"
         graphCanvas.style.display = "none"
-        divButtonShowHideGraph.innerText = "Mostra grafico"
+        divButtonShowHideGraph.innerText = "Show graph"
     } else{
         //graphFilterContainer.style.display = "block"
         graphCanvas.style.display = "block"
-        divButtonShowHideGraph.innerText = "Nascondi grafico"
+        divButtonShowHideGraph.innerText = "Hide graph"
         //createGraph()
     }
     chartVisible = !chartVisible
@@ -597,7 +600,7 @@ function updateGraph(label, dataIn, dataOut, title){
     chart.data.labels = label;
     chart.data.datasets[0].data = dataIn
     chart.data.datasets[1].data = dataOut
-    chart.options.plugins.title.text = "Spese " + title;
+    chart.options.plugins.title.text = capitalizeFirstLetter(title) + " expenses";
     chart.update();
     changeCanvasLoaded(true)
 }
@@ -623,14 +626,14 @@ function createGraph(label=xDays, dataIn=valuesIn, dataOut=valuesOut,title="sett
                     data: dataIn,
                     borderColor: "#0EC10B",
                     fill: false,
-                    label: 'Guadagni',
+                    label: 'Earnings',
                     tension: 0.1
                 },
                 {
                     data: dataOut,
                     borderColor: "#C10B0B",
                     fill: false,
-                    label: 'Spese',
+                    label: 'Expenses',
                     tension: 0.1
                 }
                 ]
@@ -646,7 +649,7 @@ function createGraph(label=xDays, dataIn=valuesIn, dataOut=valuesOut,title="sett
                     legend: {display: false},
                     title: {
                         display: true,
-                        text: 'Spese ' + title,
+                        text: capitalizeFirstLetter(title) + " expenses",
                         color: "#FFF",
                     },
                     tooltip: {
@@ -658,7 +661,7 @@ function createGraph(label=xDays, dataIn=valuesIn, dataOut=valuesOut,title="sett
                                     label += ': ';
                                 }
                                 if (context.parsed.y !== null) {
-                                    label += new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(context.parsed.y);
+                                    label += new Intl.NumberFormat('en-EN', { style: 'currency', currency: 'EUR' }).format(context.parsed.y);
                                 }
                                 return label;
                             }
@@ -782,7 +785,7 @@ function changeGraphAndStatistics(filtro, day){
     if (currentFilter==filtro && (day.toLocaleString('en-EN', check_options)==last_day.toLocaleString('en-EN', check_options) || control)){
         return
     }
-    filterText.innerText = "Filtro: " + capitalizeFirstLetter(filtro)
+    filterText.innerText = "Filter: " + capitalizeFirstLetter(data_type)
     currentFilter = filtro
     last_day = day
     /*
@@ -801,7 +804,7 @@ function changeGraphAndStatistics(filtro, day){
         //var startOfWeek = new Date()
         url += "week&year="+currentDate.getFullYear()+"&weekstart="+currentDate.toLocaleString('en-EN', options);
         url_statistics += "week&year="+currentDate.getFullYear()+"&weekstart="+currentDate.toLocaleString('en-EN', options);
-        title = "settimanali"
+        title = "weekly"
 
     }
     else if (filtro=="mese"){
@@ -809,7 +812,7 @@ function changeGraphAndStatistics(filtro, day){
         var date = new Date()
         url += "month&year="+currentDate.getFullYear()+"&month="+(currentDate.getMonth()+1);
         url_statistics += "month&year="+currentDate.getFullYear()+"&month="+(currentDate.getMonth()+1);
-        title = "mensili"
+        title = "monthly"
         day_numbers = new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
             
     } else if (filtro=="anno"){
@@ -817,7 +820,7 @@ function changeGraphAndStatistics(filtro, day){
         var date = new Date()
         url += "year&year="+currentDate.getFullYear();
         url_statistics += "year&year="+currentDate.getFullYear();
-        title = "annuali"
+        title = "yearly"
 
     }
     changeCanvasLoaded(false)
@@ -836,17 +839,17 @@ function getStatisticsData(url){
     .then(data => {
 
         var html = '<ul style="color: white; margin-left:30px">';
-        html += '<li>&bull;Hai speso in totale nel periodo selezionato ' + data.money_out + '€</li>';
-        html += '<li>&bull;Hai guadagnato in totale nel periodo selezionato '+ data.money_in + '€</li>'
-        html += '<li>&bull;Il tuo bilancio complessivo nel periodo selezionato è di ' + data.balance + '€</li>'
-        html += '<li>&bull;Resoconto spese:</li><ul style="margin-left: 30px">'
+        html += '<li>&bull;You spent a total of ' + data.money_out + '€ in the selected period</li>';
+        html += '<li>&bull;You earned a total of ' + data.money_in + '€ in the selected period</li>'
+        html += '<li>&bull;Your overall balance in the selected period is ' + data.balance + '€</li>'
+        html += '<li>&bull;Expense report:</li><ul style="margin-left: 30px">'
         data.movements_categories_out.forEach(element => {
-            html += '<li>&bull;Hai speso ' + element.money + '€ nella categoria ' + element.category + ' (' + ((100 * element.money) / data.money_out).toFixed(2) + '%)</li>'    
+            html += '<li>&bull;You spent ' + element.money + '€ in the ' + element.category + ' category (' + ((100 * element.money) / data.money_out).toFixed(2) + '%)</li>'    
         });
         html += '</ul>'
-        html += '<li>&bull;Resoconto guadagni:</li><ul style="margin-left: 30px">'
+        html += '<li>&bull;Earnings report:</li><ul style="margin-left: 30px">'
         data.movements_categories_in.forEach(element => {
-            html += '<li>&bull;Hai guadagnato ' + element.money + '€ nella categoria ' + element.category + ' (' + ((100 * element.money) / data.money_in).toFixed(2) + '%)</li>'    
+            html += '<li>&bull;You earned ' + element.money + '€ in the ' + element.category + ' category (' + ((100 * element.money) / data.money_in).toFixed(2) + '%)</li>'    
         });
         html += '</ul>'
         html += '</ul>'
@@ -930,17 +933,17 @@ function setBtnDate(date, buttonCtrl){
         if (data_type=="week"){
             var { startOfWeek, endOfWeek } = getStartAndEndOfWeek(date);
             var options = {'month': 'short', 'day': '2-digit'};
-            var date_ = date.toLocaleString('it-IT', options);
-            s = startOfWeek.toLocaleString('it-IT', options) + " - " + endOfWeek.toLocaleString('it-IT', options) + " " + date.getFullYear()
+            var date_ = date.toLocaleString('en-EN', options);
+            s = startOfWeek.toLocaleString('en-EN', options) + " - " + endOfWeek.toLocaleString('en-EN', options) + " " + date.getFullYear()
             
         } else if (data_type=="month"){
             var options = {'month': 'long'};
-            var date_ = date.toLocaleString('it-IT', options);
+            var date_ = date.toLocaleString('en-EN', options);
             s = date_ + " " + date.getFullYear()
             s = capitalizeFirstLetter(s)
         } else if (data_type=="day"){
             var options = {'day':'2-digit','month': 'long'};
-            var date_ = date.toLocaleString('it-IT', options);
+            var date_ = date.toLocaleString('en-EN', options);
             s = date_ + " " + date.getFullYear()
         }
         else if (data_type=="year"){
@@ -1003,7 +1006,7 @@ function showCalenderDays(date){
 
 //Calendar Init
 var options = {'year':'2-digit','month': 'long'};
-UICurrentMonth.innerText = currentDate.toLocaleString('it-IT', options);//formatDate(currentDate, 'MMMM - yyyy')
+UICurrentMonth.innerText = currentDate.toLocaleString('en-EN', options);//formatDate(currentDate, 'MMMM - yyyy')
 setBtnDate(currentDate)
 
 

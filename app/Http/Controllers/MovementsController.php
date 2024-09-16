@@ -33,7 +33,7 @@ class MovementsController extends Controller
     public function update(Request $request, string $id){
         $action = $request->input('action');
         //echo $action;
-        if($action=="Salva"){
+        if($action=="Save"){
             $movements = Movement::where('user_id', auth()->user()->id)->where("id", $id)->get();
             $categories = Category::where('user_id', auth()->user()->id)->where("id", $request->category)->get();
 
@@ -54,7 +54,7 @@ class MovementsController extends Controller
             
             $movement->save();
             return redirect('dashboard')->with('status', 'Movimento modificato con successo!');
-        }else if($action=="Elimina"){
+        }else if($action=="Delete"){
             //Movement::find($id)->delete();
             Movement::where('user_id', auth()->user()->id)->where("id", $id)->delete();
             return redirect('dashboard')->with('status', 'Movimento eliminato con successo!');

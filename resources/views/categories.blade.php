@@ -65,16 +65,16 @@ Other style in style.css
             
             <div class="title-div margin-20">
                 <div class="circle"></div>
-                <h2 class="title">Gestisci categorie</h2>
+                <h2 class="title">Manage categories</h2>
             </div>
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg margin-20" style="padding: 20px;min-height:300px">
                 <div style="display:flex;justify-content:flex-end;">
                     <button style="width:120px;height:50px;color:rgb(231, 228, 228);background-color:#7D3CED;
-                    font-size:18px;font-weight:500;" class="radius" onclick="addNewCategory()">Aggiungi</button>
+                    font-size:18px;font-weight:500;" class="radius" onclick="addNewCategory()">Add</button>
                 </div>
                 <div style="display: flex; justify-content:space-around; margin-top:30px;flex-wrap:wrap">
                     <div style="text-align:center; width:500px">
-                        <h2 class="title">Categorie per movimenti in uscita</h2>
+                        <h2 class="title">Categories for expenses</h2>
                         <div id="categories_out_container">
                             @foreach ($categories_out as $category)
                             <div class="radius margin-20 card center" style="text-align: center; align-items:center" id="category_{{$category->id}}">
@@ -84,14 +84,14 @@ Other style in style.css
                                 </div>
                                 <div >
                                     <button class="radius" onclick="editCategory('{{$category->id}}', '{{$category->file}}', '{{$category->name}}',1)" style="width:120px;height:50px;color:rgb(231, 228, 228);background-color:#7D3CED;
-                        font-size:18px;font-weight:500;">Modifica</button>
+                        font-size:18px;font-weight:500;">Edit</button>
                                 </div>
                             </div>
                             @endforeach
                         </div>
                     </div>
                     <div style="width:500px; text-align:center">
-                        <h2 class="title">Categorie per movimenti in entrata</h2>
+                        <h2 class="title">Categories for earnings</h2>
                         <div id="categories_in_container">
                             @foreach ($categories_in as $category)
                             <div class="radius margin-20 card center" style="text-align: center; align-items:center" id="category_{{$category->id}}">
@@ -101,7 +101,7 @@ Other style in style.css
                                 </div>
                                 <div >
                                     <button class="radius" onclick="editCategory('{{$category->id}}', '{{$category->file}}', '{{$category->name}}',2)" style="width:120px;height:50px;color:rgb(231, 228, 228);background-color:#7D3CED;
-                        font-size:18px;font-weight:500;">Modifica</button>
+                        font-size:18px;font-weight:500;">Edit</button>
                                 </div>
                             </div>
                             @endforeach
@@ -118,25 +118,25 @@ Other style in style.css
         <div class="modal-content bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
             <span class="close" id="closeModal" onclick="closeModalView()">&times;</span>
             <div class="margin-20" style="display:flex; gap: 30px;">
-                <span style="color: aliceblue; width:200px;">Link immagine (da icons8)</span>
+                <span style="color: aliceblue; width:200px;">Category icon (from icons8 - 50pixel)</span>
                 <input type="text" name="" id="categoryLink" placeholder="https://img.icons8.com/ios/50/discord-logo--v1.png">
             </div>
             <div class="margin-20" style="display:flex; gap: 30px;">
-                <span style="color: aliceblue; width:200px;">Nome</span>
-                <input type="text" name="" id="categoryName" placeholder="nome" style="">
+                <span style="color: aliceblue; width:200px;">Name</span>
+                <input type="text" name="" id="categoryName" placeholder="Name" style="">
             </div>
             <div class="margin-20" style="display:flex; gap: 30px;">
-                <span style="color: aliceblue; width:200px;">Tipologia</span>
+                <span style="color: aliceblue; width:200px;">Type</span>
                 <select name="type" id="categoryType">
-                    <option value="1" selected="selected">Uscita</option>
-                    <option value="2">Entrata</option>
+                    <option value="1" selected="selected">Expenses</option>
+                    <option value="2">Earnings</option>
                 </select>
             </div>
             <div style="display:flex; gap: 30px; justify-content:center;margin-top:30px">
                 <button id="btn_delete_cancel_categories" class="radius" style="width:120px;height:50px;color:rgb(231, 228, 228);background-color:#C10B0B;
-                    font-size:18px;font-weight:500;">Elimina</button>
+                    font-size:18px;font-weight:500;">Delete</button>
                 <button class="radius" onclick="saveCategory()" style="width:120px;height:50px;color:rgb(231, 228, 228);background-color:#7D3CED;
-                    font-size:18px;font-weight:500;">Salva</button>
+                    font-size:18px;font-weight:500;">Save</button>
             </div>
         </div>
   
@@ -183,14 +183,14 @@ function editCategory(id, fileLink, name, type){
     categoryType.selectedIndex = type-1;
     category_id = id;
     btnDeleteCancelCategories.setAttribute("onclick", "deleteCategory()");
-    btnDeleteCancelCategories.innerText = "Elimina"
+    btnDeleteCancelCategories.innerText = "Delete"
     modal.style.display = "block";
 }
 
 function addNewCategory(){
 
     category_id = -1
-    btnDeleteCancelCategories.innerText = "Annulla"
+    btnDeleteCancelCategories.innerText = "Cancel"
     btnDeleteCancelCategories.setAttribute("onclick", "cancelCategorySave()");
     modal.style.display = "block";
 }
@@ -200,7 +200,7 @@ function saveCategory(){
     categoryLink.value = categoryLink.value.trim()
     categoryName.value = categoryName.value.trim()
     if (categoryLink.value == "" || categoryName.value == ""){
-        alert("Impossibile salvare la categoria: uno o più elementi sono nulli")
+        alert("Unable to save category: One or more items are null")
         return
     }
     fetch(url, {

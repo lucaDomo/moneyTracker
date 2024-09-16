@@ -21,6 +21,9 @@
                     <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
                 </a>
             </div>
+            <div style="color: white; margin-top:20px">
+                A simple app to track your expenses and earnings.
+            </div>
 
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}

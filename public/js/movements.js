@@ -42,7 +42,7 @@ const onClick = (event) => {
     //console.log(event.srcElement.id);
     var id = event.srcElement.id.split("_")[1]
     //console.log(id)
-    window.location.href = 'https://moneytracker.test/movimenti/detail/'+id;
+    window.location.href = 'https://moneytracker.test/transaction/detail/'+id;
 }
 
 /* Funzione che viene invocata in base al periodo (giorno, settimana, mese, anno) che si vuole visualizzare */
@@ -176,17 +176,17 @@ function setBtnDate(date, buttonCtrl){
         if (data_type=="week"){
             var { startOfWeek, endOfWeek } = getStartAndEndOfWeek(date);
             var options = {'month': 'short', 'day': '2-digit'};
-            var date_ = date.toLocaleString('it-IT', options);
-            s = startOfWeek.toLocaleString('it-IT', options) + " - " + endOfWeek.toLocaleString('it-IT', options) + " " + date.getFullYear()
+            var date_ = date.toLocaleString('en-EN', options);
+            s = startOfWeek.toLocaleString('en-EN', options) + " - " + endOfWeek.toLocaleString('en-EN', options) + " " + date.getFullYear()
             
         } else if (data_type=="month"){
             var options = {'month': 'long'};
-            var date_ = date.toLocaleString('it-IT', options);
+            var date_ = date.toLocaleString('en-EN', options);
             s = date_ + " " + date.getFullYear()
             s = capitalizeFirstLetter(s)
         } else if (data_type=="day"){
             var options = {'day':'2-digit','month': 'long'};
-            var date_ = date.toLocaleString('it-IT', options);
+            var date_ = date.toLocaleString('en-EN', options);
             s = date_ + " " + date.getFullYear()
         }
         else if (data_type=="year"){
@@ -194,7 +194,7 @@ function setBtnDate(date, buttonCtrl){
         }
         el.value = s;
 
-        var url = "/movimenti_list?data_type="+ data_type
+        var url = "/transactions/period?data_type="+ data_type
         if (data_type=="year"){
             url += "&year="+date.getFullYear();
         }
@@ -207,7 +207,7 @@ function setBtnDate(date, buttonCtrl){
         }
         else if(data_type=="day"){
             options = {'day':'2-digit'};
-            url += "&day="+date.toLocaleString('it-IT', options) + "&month=" + (date.getMonth()+1) + "&year=" + date.getFullYear();
+            url += "&day="+date.toLocaleString('en-EN', options) + "&month=" + (date.getMonth()+1) + "&year=" + date.getFullYear();
         }
         getData(url)
     } else{

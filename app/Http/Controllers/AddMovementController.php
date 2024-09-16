@@ -61,7 +61,7 @@ class AddMovementController extends Controller
         
         $movement->save();
 
-        return redirect('dashboard')->with('status', 'Movimento salvato con successo!');
+        return redirect('dashboard')->with('status', 'Transaction saved successfully!');
     }
 
 }
